@@ -18,7 +18,7 @@ Create yu-gi-oh decks and share it in a shared deck space.
 
 ## ERD
 
-![ERD](./ERD/erd.png)
+![ERD](./ERD/erd3.png)
 
 ## RESTful Routes
 
