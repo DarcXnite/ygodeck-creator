@@ -22,16 +22,16 @@ Create yu-gi-oh decks and share it in a shared deck space.
 
 ## RESTful Routes
 
-| VERB   | URL pattern       | Action \(CRUD\)   | Description                                                        |
-| :----- | :---------------- | :---------------- | :----------------------------------------------------------------- |
-| GET    | /                 | Index \(Read\)    | Homepage                                                           |
-| GET    | /user             | Login \(Read\)    | Login from '/' redirect to '/profile'                              |
-| POST   | /user/new         | New \(Create\)    | creates a new user, email,username,password redirect to '/profile' |
-| GET    | /profile          | Show \(Read\)     | profile dashboard, shows decks                                     |
-| POST   | /profile/deck/new | New \(Create\)    | create a new deck                                                  |
-| GET    | /profile/deck/:id | Show \(Read\)     | show page with deck with search function                           |
-| DELETE | /profile/deck/:id | Delete \(Delete\) | delete deck redirect to '/profile'                                 |
-| PUT    | /profile/deck/:id | Update \(Update\) | update name and description of deck                                |
+| VERB   | URL pattern | Action \(CRUD\)   | Description                                                        |
+| :----- | :---------- | :---------------- | :----------------------------------------------------------------- |
+| GET    | /           | Index \(Read\)    | Homepage                                                           |
+| GET    | /user       | Login \(Read\)    | Login from '/' redirect to '/profile'                              |
+| POST   | /user/new   | New \(Create\)    | creates a new user, email,username,password redirect to '/profile' |
+| GET    | /profile    | Show \(Read\)     | profile dashboard, shows decks                                     |
+| POST   | /deck/new   | New \(Create\)    | create a new deck                                                  |
+| GET    | /deck/:id   | Show \(Read\)     | show page with deck with search function                           |
+| DELETE | /deck/:id   | Delete \(Delete\) | delete deck redirect to '/profile'                                 |
+| PUT    | /deck/:id   | Update \(Update\) | update name and description of deck                                |
 
 ### Goals
 
