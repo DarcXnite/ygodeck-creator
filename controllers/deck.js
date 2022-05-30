@@ -3,12 +3,8 @@ const router = express.Router();
 const cryptoJS = require("crypto-js");
 const bcrypt = require("bcryptjs");
 
-router.get("/new", (req, res) => {
-  res.render("users/new");
-});
-
-router.post("/new", async (req, res) => {
-  res.send("booty booty");
+router.get("/", (req, res) => {
+  res.render("deck/deck");
 });
 
 module.exports = router;

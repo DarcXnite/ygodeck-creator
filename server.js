@@ -24,6 +24,8 @@ app.get("/", (req, res) => {
 
 // controllers
 app.use("/users", require("./controllers/users"));
+app.use("/profile", require("./controllers/profile"));
+app.use("/deck", require("./controllers/deck"));
 
 // server listen
 app.listen(PORT, () => {
