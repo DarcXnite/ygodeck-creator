@@ -1,5 +1,8 @@
 <div class="d-flex flex-column justify-content-center align-items-center">
-  <form action="/users" method="post" class="d-flex flex-column">
+  <% if (msg) { %>
+  <p class="mb-5"><%= msg %></p>
+  <% } %>
+  <form action="/" method="post" class="d-flex flex-column">
     <div class="form-floating mb-3">
       <input
         type="email"

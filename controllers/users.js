@@ -29,8 +29,8 @@ router.post("/new", async (req, res) => {
       res.cookie("userId", encryptId);
       res.redirect("/profile");
     } else {
-      res.render("users/new", {
-        msg: "User already exists, please log in with your username and password",
+      res.render("index.ejs", {
+        msg: "User already exists, please log in with your email and password",
       });
     }
   } catch (err) {
