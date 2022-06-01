@@ -1,16 +1,22 @@
-<h2>Deck page</h2>
+<h2 class="mb-5">Create a new deck</h2>
 
-<h2>Create a new deck</h2>
-
-<form action="/deck" method="post">
-  <label for="deckName">Deck name</label>
+<form class="mb-5" action="/deck" method="post">
+  <label for="deckName">Deck Name:</label>
   <input type="text" id="deckName" name="deckName" required />
 
-  <button type="submit">Create New Deck</button>
+  <button class="btn btn-success" type="submit">Create New Deck</button>
 </form>
 
-<ul>
+<ul class="list-group d-flex justify-content-center">
   <% allDecks.forEach(deck => { %>
-  <a href="/deck/<%= deck.id %>"><li><%= deck.deckName %></li></a>
+  <div class="d-flex justify-content-center align-items-center">
+    <li class="list-group-item w-75 d-flex justify-content-between">
+      <div><%= deck.deckName %></div>
+      <div>
+        <a class="btn btn-danger" href="/deck/<%= deck.id %>">Edit Deck</a>
+      </div>
+    </li>
+  </div>
+
   <% }) %>
 </ul>

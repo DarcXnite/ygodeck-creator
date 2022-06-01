@@ -41,28 +41,31 @@ router.get("/:id/results", async (req, res) => {
   const id = req.params.id;
   const query = req.query;
 
-  try {
-    const foundDeck = await db.deck.findOne({
-      where: { id: id },
-    });
-    const allCardsInDeck = await db.card.findAll({
-      where: { deckId: foundDeck.id },
-    });
+  // Throttle search to not break limit
+  setTimeout(async () => {
+    try {
+      const foundDeck = await db.deck.findOne({
+        where: { id: id },
+      });
+      const allCardsInDeck = await db.card.findAll({
+        where: { deckId: foundDeck.id },
+      });
 
-    const allSearchedCards = await axios.get(
-      `https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=${query.name}`
-    );
+      const allSearchedCards = await axios.get(
+        `https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=${query.name}`
+      );
 
-    searchedCardsDB = allSearchedCards.data.data;
+      searchedCardsDB = allSearchedCards.data.data;
 
-    res.render("deck/edit", {
-      id,
-      searchedCardsDB,
-      allCardsInDeck,
-    });
-  } catch (err) {
-    console.warn(err);
-  }
+      res.render("deck/edit", {
+        id,
+        searchedCardsDB,
+        allCardsInDeck,
+      });
+    } catch (err) {
+      console.warn(err);
+    }
+  }, 300);
 });
 
 // POST // adds cards to deck

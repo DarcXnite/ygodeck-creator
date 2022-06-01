@@ -46,8 +46,6 @@ router.put("/edit", async (req, res) => {
       },
     });
 
-    console.log(matchingUsers, "sdkjfhasdjkfhasdkjfhsadkjfhaslkdfhadsf");
-
     if (matchingUsers.length === 0) {
       const hashedPass = bcrypt.hashSync(input.password, salts);
 
