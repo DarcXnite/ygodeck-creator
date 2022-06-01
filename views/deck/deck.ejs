@@ -1,1 +1,16 @@
-<h2>deck page</h2>
+<h2>Deck page</h2>
+
+<h2>Create a new deck</h2>
+
+<form action="/deck" method="post">
+  <label for="deckName">Deck name</label>
+  <input type="text" id="deckName" name="deckName" required />
+
+  <button type="submit">Create New Deck</button>
+</form>
+
+<ul>
+  <% allDecks.forEach(deck => { %>
+  <a href="/deck/<%= deck.id %>"><li><%= deck.deckName %></li></a>
+  <% }) %>
+</ul>
