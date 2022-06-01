@@ -1,0 +1,47 @@
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <% if (msg) { %>
+  <p class="mb-5"><%= msg %></p>
+  <% } %>
+
+  <form
+    action="/profile/edit/?_method=PUT"
+    method="post"
+    class="d-flex flex-column w-25"
+  >
+    <div class="form-floating mb-3">
+      <input
+        class="form-control"
+        id="floatingEmail"
+        type="text"
+        name="email"
+        value="<%= user.email %>"
+        required
+      />
+      <label for="floatingEmail">Email address</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+        class="form-control"
+        id="floatingUsername"
+        type="text"
+        name="username"
+        value="<%= user.username %>"
+        required
+      />
+      <label for="floatingUsername">Username</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+        class="form-control"
+        id="floatingPassword"
+        type="text"
+        name="password"
+        value=""
+        required
+      />
+      <label for="floatingPassword">New Password</label>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Finish Edit</button>
+  </form>
+</div>

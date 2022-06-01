@@ -7,6 +7,7 @@ const cryptoJS = require("crypto-js");
 const bcrypt = require("bcryptjs");
 const db = require("./models");
 const methodOverride = require("method-override");
+const res = require("express/lib/response");
 
 // app config
 const PORT = process.env.PORT || 3000;
@@ -64,11 +65,11 @@ app.post("/", async (req, res) => {
     // if user is found, check password
     const compare = bcrypt.compareSync(input.password, foundUser.password);
     if (compare) {
-      const encryptId = cryptoJS.AES.encrypt(
+      const encryptedId = cryptoJS.AES.encrypt(
         foundUser.id.toString(),
         process.env.ENC_KEY
       ).toString();
-      res.cookie("userId", encryptId);
+      res.cookie("userId", encryptedId);
       res.redirect("/profile");
     } else {
       res.render("index", {
@@ -78,6 +79,12 @@ app.post("/", async (req, res) => {
   } catch (err) {
     console.warn(err);
   }
+});
+
+// GET // Logs user out
+app.get("/logout", (req, res) => {
+  res.clearCookie("userId");
+  res.redirect("/");
 });
 
 // controllers

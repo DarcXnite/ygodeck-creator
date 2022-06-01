@@ -1,5 +1,13 @@
 <h2>Welcome, <%= user.username %></h2>
 
-<h2>show all the decks</h2>
-
 <a href="/deck">Decks</a>
+
+<div>
+  <form action="/profile/edit" method="get">
+    <input hidden type="text" name="email" value="<%= user.email %>" />
+    <input hidden type="text" name="username" value="<%= user.username %>" />
+    <input hidden type="text" name="password" value="" />
+
+    <button class="btn btn-primary" type="submit">Edit Profile</button>
+  </form>
+</div>
