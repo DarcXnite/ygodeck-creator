@@ -1,5 +1,5 @@
 "use strict";
-const { Model } = require("sequelize");
+const { Model, STRING } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class card extends Model {
     /**
@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       def: DataTypes.INTEGER,
       race: DataTypes.STRING,
       attribute: DataTypes.STRING,
+      imageUrl: DataTypes.STRING,
       deckId: DataTypes.INTEGER,
     },
     {

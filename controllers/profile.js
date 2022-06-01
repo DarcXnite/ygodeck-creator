@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
   }
 
   // const user = res.locals.user;
-  console.log(res.locals.user, "user");
+  // console.log(res.locals.user, "user");
 
   // const userDecks = await db.deck.findAll()
 

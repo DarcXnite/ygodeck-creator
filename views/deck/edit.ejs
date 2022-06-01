@@ -1,5 +1,21 @@
 <h2>Edit deck</h2>
 
+<div class="d-flex flex-wrap container-fluid my-5">
+  <% allCardsInDeck.forEach(card => { %> <% const { name, imageUrl } =
+  card.dataValues %>
+
+  <div class="w-25">
+    <img src="<%= imageUrl %>" alt="<%= name %>" width="168" height="246" />
+
+    <form class="my-3" action="/deck/<%= id %>/?_method=DELETE" method="post">
+      <input hidden type="number" name="id" value="<%= card.id %>" />
+      <button type="submit">Remove Card</button>
+    </form>
+  </div>
+
+  <% }) %>
+</div>
+
 <form action="/deck/<%= id %>/results" method="get">
   <label for="search">Search for Cards</label>
   <input type="text" id="search" name="name" />
@@ -7,8 +23,30 @@
   <button type="submit">Search</button>
 </form>
 
-<% allCards.forEach((card) => { %>
-<p><%= card.name %></p>
-<img src="<%= card.card_images[0].image_url_small %>" alt="" />
-<form action="/deck/<%= id %>" method="post"></form>
-<% }) %>
+<div class="d-flex flex-wrap container-fluid my-5">
+  <% searchedCardsDB.forEach((card) => { %>
+  <div class="w-25 mb-5">
+    <p><%= card.name %></p>
+    <img
+      src="<%= card.card_images[0].image_url_small %>"
+      alt="<%= card.name %>"
+      width="168"
+      height="246"
+    />
+
+    <form class="mt-3" action="/deck/<%= id %>" method="post">
+      <input hidden type="number" name="cardid" value="<%= card.id %>" />
+      <input hidden type="text" name="name" value="<%= card.name %>" />
+      <input
+        hidden
+        type="text"
+        name="image"
+        value="<%= card.card_images[0].image_url_small %>"
+      />
+
+      <button type="submit">Add Card to Deck</button>
+    </form>
+  </div>
+
+  <% }) %>
+</div>
