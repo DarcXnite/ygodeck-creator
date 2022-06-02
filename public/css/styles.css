@@ -1,0 +1,25 @@
+body {
+  background-image: url("../images/yugioh-bg.png");
+  background-size: cover;
+  background-repeat: repeat;
+  font-family: "Boogaloo", Arial;
+}
+
+.my-flex-container {
+  height: 60vh;
+}
+
+.brandImg {
+  background-image: url("../images/puzzle.png");
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+}
+
+.createDeckInput {
+  width: 20rem;
+}
+
+.createDeckLabel {
+  font-size: 2rem;
+}

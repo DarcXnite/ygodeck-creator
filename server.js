@@ -7,11 +7,11 @@ const cryptoJS = require("crypto-js");
 const bcrypt = require("bcryptjs");
 const db = require("./models");
 const methodOverride = require("method-override");
-const res = require("express/lib/response");
 
 // app config
 const PORT = process.env.PORT || 3000;
 const app = express();
+app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 
 // middlewares

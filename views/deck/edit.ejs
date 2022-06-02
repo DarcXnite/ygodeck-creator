@@ -1,6 +1,8 @@
-<div class="d-flex justify-content-between container-fluid">
+<link rel="stylesheet" href="/css/styles.css" />
+
+<div class="d-flex justify-content-between align-items-center container-fluid">
   <a class="btn btn-primary" href="/deck">Back to decks</a>
-  <h2>Edit deck</h2>
+  <h2 class="text-white">Edit deck</h2>
   <div></div>
 </div>
 
@@ -28,8 +30,7 @@
 </form>
 
 <div class="d-flex flex-wrap container-fluid my-5">
-  <% if (searchedCardsDB.length !== 0) { %> <% searchedCardsDB.forEach((card) =>
-  { %>
+  <% searchedCardsDB.forEach((card) => { %>
   <div class="w-25 mb-5">
     <p><%= card.name %></p>
     <img
@@ -53,7 +54,5 @@
     </form>
   </div>
 
-  <% }) %> <% } else { %>
-  <p>Loading...</p>
-  <% } %>
+  <% }) %>
 </div>

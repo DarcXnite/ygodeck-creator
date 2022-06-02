@@ -10,18 +10,30 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body class="text-center">
     <nav class="navbar bg-light mb-5">
       <div class="container-fluid">
-        <a href="/profile" class="navbar-brand">YGODB</a>
+        <div>
+          <a href="/profile" class="navbar-brand"
+            ><div class="brandImg"></div>
+            YGODB</a
+          >
+        </div>
         <ul class="nav justify-content-end">
           <% if (user) { %>
           <li class="nav-item">
-            <a href="/profile" class="nav-link">Profile</a>
+            <a href="/profile" class="nav-link fs-4">Profile</a>
           </li>
           <li class="nav-item">
-            <a href="/logout" class="nav-link">Logout</a>
+            <a href="/logout" class="nav-link fs-4">Logout</a>
           </li>
           <% } %>
         </ul>
