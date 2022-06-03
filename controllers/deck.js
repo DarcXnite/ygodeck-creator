@@ -49,7 +49,7 @@ router.get("/:id/results", async (req, res) => {
       });
       const allCardsInDeck = await db.card.findAll({
         where: { deckId: foundDeck.id },
-        order: ["createdAt", "DESC"],
+        order: [["createdAt", "DESC"]],
       });
 
       const allSearchedCards = await axios.get(
