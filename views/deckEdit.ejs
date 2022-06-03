@@ -10,29 +10,38 @@
   <% allCardsInDeck.forEach(card => { %> <% const { name, imageUrl } =
   card.dataValues %>
 
-  <div class="w-25">
+  <div class="cardWidth">
     <img src="<%= imageUrl %>" alt="<%= name %>" width="168" height="246" />
 
     <form class="my-3" action="/deck/<%= id %>/?_method=DELETE" method="post">
       <input hidden type="number" name="id" value="<%= card.id %>" />
-      <button type="submit">Remove Card</button>
+      <button class="btn btn-danger" type="submit">Remove Card</button>
     </form>
   </div>
 
   <% }) %>
 </div>
 
-<form action="/deck/<%= id %>/results" method="get">
-  <label for="search">Search for Cards</label>
-  <input type="text" id="search" name="name" />
+<form
+  class="d-flex justify-content-center align-items-center"
+  action="/deck/<%= id %>/results"
+  method="get"
+>
+  <label for="search" class="text-white fs-4">Search for Cards:</label>
+  <input
+    class="form-control mx-3 createDeckInput"
+    type="text"
+    id="search"
+    name="name"
+  />
 
-  <button type="submit">Search</button>
+  <button class="btn btn-light" type="submit">Search</button>
 </form>
 
-<div class="d-flex flex-wrap container-fluid my-5">
+<div class="d-flex flex-wrap justify-content-between container-fluid my-5">
   <% searchedCardsDB.forEach((card) => { %>
-  <div class="w-25 mb-5">
-    <p><%= card.name %></p>
+  <div class="mb-5 cardWidth">
+    <p class="text-white"><%= card.name %></p>
     <img
       src="<%= card.card_images[0].image_url_small %>"
       alt="<%= card.name %>"
@@ -50,7 +59,7 @@
         value="<%= card.card_images[0].image_url_small %>"
       />
 
-      <button type="submit">Add Card to Deck</button>
+      <button class="btn btn-success" type="submit">Add Card to Deck</button>
     </form>
   </div>
 

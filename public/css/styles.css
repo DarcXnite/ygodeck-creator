@@ -6,7 +6,7 @@ body {
 }
 
 .my-flex-container {
-  height: 60vh;
+  height: 80vh;
 }
 
 .brandImg {
@@ -20,6 +20,19 @@ body {
   width: 20rem;
 }
 
-.createDeckLabel {
-  font-size: 2rem;
+.flexEditDelete {
+  width: 120px;
+}
+
+.searchCardsContainer {
+  width: 20rem;
+}
+
+nav {
+  background-image: url("../images/kaiba-banner.png");
+  background-size: cover;
+}
+
+.cardWidth {
+  width: 16rem;
 }

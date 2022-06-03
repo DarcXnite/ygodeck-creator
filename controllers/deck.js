@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
 
     res.locals.user.addDeck(newDeck);
 
-    res.redirect("/deck");
+    res.redirect("back");
   } catch (err) {
     console.warn(err);
   }
@@ -49,6 +49,7 @@ router.get("/:id/results", async (req, res) => {
       });
       const allCardsInDeck = await db.card.findAll({
         where: { deckId: foundDeck.id },
+        order: ["createdAt", "DESC"],
       });
 
       const allSearchedCards = await axios.get(
@@ -57,7 +58,7 @@ router.get("/:id/results", async (req, res) => {
 
       searchedCardsDB = allSearchedCards.data.data;
 
-      res.render("deck/edit", {
+      res.render("deckEdit", {
         id,
         searchedCardsDB,
         allCardsInDeck,
@@ -90,13 +91,9 @@ router.post("/:id", async (req, res) => {
 
     await foundDeck.addCard(newCard);
 
-    const allCardsInDeck = await db.card.findAll({
-      where: { deckId: foundDeck.id },
-    });
-
     // console.log(allCardsInDeck);
 
-    res.render("deck/edit", { id, searchedCardsDB, allCardsInDeck });
+    res.redirect("back");
   } catch (err) {
     console.warn(err);
   }
@@ -111,7 +108,22 @@ router.get("/:id", async (req, res) => {
   const allCardsInDeck = await db.card.findAll({
     where: { deckId: foundDeck.id },
   });
-  res.render("deck/edit", { id, searchedCardsDB, allCardsInDeck });
+  res.render("deckEdit", { id, searchedCardsDB, allCardsInDeck });
+});
+
+//DELETE // delete deck
+router.delete("/:id/delete", async (req, res) => {
+  const deckId = req.params.id;
+  try {
+    const foundDeck = await db.deck.findOne({
+      where: { id: deckId },
+    });
+
+    await foundDeck.destroy();
+    res.redirect("back");
+  } catch (err) {
+    console.warn(err);
+  }
 });
 
 // DELETE // delete cards from table
@@ -126,14 +138,7 @@ router.delete("/:id", async (req, res) => {
 
     await foundCardInDeck.destroy();
 
-    const foundDeck = await db.deck.findOne({
-      where: { id: id },
-    });
-    const allCardsInDeck = await db.card.findAll({
-      where: { deckId: foundDeck.id },
-    });
-
-    res.render("deck/edit", { id, searchedCardsDB, allCardsInDeck });
+    res.redirect("back");
   } catch (err) {
     console.warn(err);
   }

@@ -1,11 +1,3 @@
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap"
-  rel="stylesheet"
-/>
-<link rel="stylesheet" href="../css/styles.css" />
-
 <h1 class="mb-5 text-white">Create a new deck</h1>
 
 <form
@@ -32,8 +24,16 @@
       class="list-group-item w-75 d-flex justify-content-between align-items-center fs-4"
     >
       <div><%= deck.deckName %></div>
-      <div>
-        <a class="btn btn-danger" href="/deck/<%= deck.id %>">Edit Deck</a>
+      <div class="d-flex justify-content-between flexEditDelete">
+        <a class="btn btn-dark" href="/deck/<%= deck.id %>">Edit</a>
+
+        <form
+          action="/deck/<%= deck.id %>/delete/?_method=DELETE"
+          method="post"
+        >
+          <input hidden type="number" name="deckId" />
+          <button class="btn btn-danger" type="submit">Delete</button>
+        </form>
       </div>
     </li>
   </div>
