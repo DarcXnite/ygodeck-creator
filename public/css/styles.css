@@ -36,3 +36,7 @@ nav {
 .cardWidth {
   width: 16rem;
 }
+
+.navBtns:hover {
+  color: black;
+}
