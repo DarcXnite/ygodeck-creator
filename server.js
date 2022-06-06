@@ -7,6 +7,7 @@ const cryptoJS = require("crypto-js");
 const bcrypt = require("bcryptjs");
 const db = require("./models");
 const methodOverride = require("method-override");
+const req = require("express/lib/request");
 
 // app config
 const PORT = process.env.PORT || 3000;
@@ -91,6 +92,15 @@ app.get("/logout", (req, res) => {
 app.use("/users", require("./controllers/users"));
 app.use("/profile", require("./controllers/profile"));
 app.use("/deck", require("./controllers/deck"));
+
+// 404, 505 Error Handlers
+app.use((req, res) => {
+  res.status(404).render("404.ejs");
+});
+
+app.use((err, req, res, next) => {
+  res.status(500).render("500.ejs");
+});
 
 // server listen
 app.listen(PORT, () => {
