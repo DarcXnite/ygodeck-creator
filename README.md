@@ -1,5 +1,7 @@
 # ygodeck-creator
 
+https://ygodeck-builder.herokuapp.com/
+
 Search for cards, Create a Deck, and Share it.
 
 ## API
@@ -10,28 +12,36 @@ https://db.ygoprodeck.com/api-guide/
 
 Create yu-gi-oh decks and share it in a shared deck space.
 
-## Wireframe
+## Approach Taken
 
-![Screen1](./wireframes/Homepage%401x.png)
-![Screen2](./wireframes/Profile%401x.png)
-![Screen3](./wireframes/Shared%20Decks%401x.png)
+When building the website via server, I wanted to create a simple point and click interface for ease of use.
 
-## ERD
+## Technologies used
 
-![ERD](./ERD/erd3.png)
+- Sequelize
+- Postgress
+- EJS
+- Axios
+- Express.js
+- Bcryptjs
+- Node.js
+
+![Screen1](./public/images/ygohomepage.png)
 
 ## RESTful Routes
 
-| VERB   | URL pattern | Action \(CRUD\)   | Description                                                        |
-| :----- | :---------- | :---------------- | :----------------------------------------------------------------- |
-| GET    | /           | Index \(Read\)    | Homepage                                                           |
-| GET    | /user       | Login \(Read\)    | Login from '/' redirect to '/profile'                              |
-| POST   | /user/new   | New \(Create\)    | creates a new user, email,username,password redirect to '/profile' |
-| GET    | /profile    | Show \(Read\)     | profile dashboard, shows decks                                     |
-| POST   | /deck/new   | New \(Create\)    | create a new deck                                                  |
-| GET    | /deck/:id   | Show \(Read\)     | show page with deck with search function                           |
-| DELETE | /deck/:id   | Delete \(Delete\) | delete deck redirect to '/profile'                                 |
-| PUT    | /deck/:id   | Update \(Update\) | update name and description of deck                                |
+| VERB   | URL pattern       | Action \(CRUD\)   | Description                                                        |
+| :----- | :---------------- | :---------------- | :----------------------------------------------------------------- |
+| GET    | /                 | Index \(Read\)    | Homepage                                                           |
+| POST   | /                 | Index \(Read\)    | Check user creds                                                   |
+| GET    | /logout           | Logout \(Read\)   | Logs user out                                                      |
+| GET    | /user             | Login \(Read\)    | Login from '/' redirect to '/profile'                              |
+| POST   | /user/new         | New \(Create\)    | creates a new user, email,username,password redirect to '/profile' |
+| GET    | /profile          | Show \(Read\)     | profile dashboard, shows decks                                     |
+| PUT    | /profile/edit     | Edit \(Read\)     | Edit profile details                                               |
+| POST   | /deck             | New \(Create\)    | create a new deck                                                  |
+| GET    | /deck/:id/results | Show \(Read\)     | show page with deck with search function                           |
+| DELETE | /deck/:id/delete  | Delete \(Delete\) | delete deck redirect to '/profile'                                 |
 
 ### Goals
 
