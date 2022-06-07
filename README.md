@@ -19,7 +19,7 @@ When building the website via server, I wanted to create a simple point and clic
 ## Technologies used
 
 - Sequelize
-- Postgress
+- Postgres
 - EJS
 - Axios
 - Express.js
@@ -27,6 +27,14 @@ When building the website via server, I wanted to create a simple point and clic
 - Node.js
 
 ![Screen1](./public/images/ygohomepage.png)
+
+## Clone Repo installation instructions
+
+- Start with npm install to install all dependancies in CLI
+- Install postgres SQL database on your PC (https://www.postgresql.org/)
+- Create a local database called ygodeck_builder with postgres
+- In your CLI run the command sequelize db:migrate to migrate your local database with sequelize tables.
+- Run node server.js or if you have nodemon globally installed on your machine.
 
 ## RESTful Routes
 

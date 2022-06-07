@@ -27,10 +27,7 @@
       <div class="d-flex justify-content-between flexEditDelete">
         <a class="btn btn-dark" href="/deck/<%= deck.id %>">Edit</a>
 
-        <form
-          action="/deck/<%= deck.id %>/delete/?_method=DELETE"
-          method="post"
-        >
+        <form action="/deck/<%= deck.id %>/?_method=DELETE" method="post">
           <input hidden type="number" name="deckId" />
           <button class="btn btn-danger" type="submit">Delete</button>
         </form>

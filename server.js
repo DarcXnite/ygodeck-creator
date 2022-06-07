@@ -45,7 +45,7 @@ app.use(async (req, res, next) => {
   }
 });
 
-// Homepage Route
+// Homepage Route // Login
 app.get("/", (req, res) => {
   res.render("index", { msg: null });
 });
@@ -71,7 +71,7 @@ app.post("/", async (req, res) => {
         process.env.ENC_KEY
       ).toString();
       res.cookie("userId", encryptedId);
-      res.redirect("/profile");
+      res.redirect("/users/profile");
     } else {
       res.render("index", {
         msg: "Email and password does not match, try again...",
@@ -82,15 +82,8 @@ app.post("/", async (req, res) => {
   }
 });
 
-// GET // Logs user out
-app.get("/logout", (req, res) => {
-  res.clearCookie("userId");
-  res.redirect("/");
-});
-
 // controllers
 app.use("/users", require("./controllers/users"));
-app.use("/profile", require("./controllers/profile"));
 app.use("/deck", require("./controllers/deck"));
 
 // 404, 505 Error Handlers

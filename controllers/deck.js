@@ -1,12 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const cryptoJS = require("crypto-js");
-const bcrypt = require("bcryptjs");
 const axios = require("axios");
 const db = require("../models");
-
-// global var to NOT remove all searched card
-let searchedCardsDB = [];
 
 // GET // renders deck page
 router.get("/", async (req, res) => {
@@ -36,6 +31,18 @@ router.post("/", async (req, res) => {
   }
 });
 
+// GET // renders edit deck page
+router.get("/:id", async (req, res) => {
+  const id = req.params.id;
+  const foundDeck = await db.deck.findOne({
+    where: { id: id },
+  });
+  const allCardsInDeck = await db.card.findAll({
+    where: { deckId: foundDeck.id },
+  });
+  res.render("deckEdit", { id, allCardsInDeck, allSearchedCards: [] });
+});
+
 // GET // Search for cards through API and renders on page
 router.get("/:id/results", async (req, res) => {
   const id = req.params.id;
@@ -56,11 +63,9 @@ router.get("/:id/results", async (req, res) => {
         `https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=${query.name}`
       );
 
-      searchedCardsDB = allSearchedCards.data.data;
-
       res.render("deckEdit", {
         id,
-        searchedCardsDB,
+        allSearchedCards: allSearchedCards.data.data,
         allCardsInDeck,
       });
     } catch (err) {
@@ -97,18 +102,6 @@ router.post("/:id", async (req, res) => {
   } catch (err) {
     console.warn(err);
   }
-});
-
-// GET // renders edit deck page
-router.get("/:id", async (req, res) => {
-  const id = req.params.id;
-  const foundDeck = await db.deck.findOne({
-    where: { id: id },
-  });
-  const allCardsInDeck = await db.card.findAll({
-    where: { deckId: foundDeck.id },
-  });
-  res.render("deckEdit", { id, searchedCardsDB, allCardsInDeck });
 });
 
 //DELETE // delete deck
